@@ -1,9 +1,3 @@
-/**
- * @fileOverview
- * @author Benjamin Pitzer - ben.pitzer@gmail.com
- * @author Russell Toris - rctoris@wpi.edu
- */
-
 import UrdfMaterial from "./UrdfMaterial.js";
 import UrdfLink from "./UrdfLink.js";
 import UrdfJoint from "./UrdfJoint.js";

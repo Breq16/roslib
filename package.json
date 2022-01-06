@@ -1,8 +1,8 @@
 {
-  "name": "roslib",
-  "homepage": "https://www.robotwebtools.org",
-  "description": "The standard ROS Javascript Library",
-  "version": "1.1.0",
+  "name": "@breq/roslib",
+  "homepage": "https://github.com/Breq16/roslib",
+  "description": "A modern TypeScript library for ROS",
+  "version": "0.1.0",
   "license": "BSD-2-Clause",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.0",

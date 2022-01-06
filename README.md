@@ -1,4 +1,4 @@
-# roslibjs
+# @breq/roslib
 
 [![Test](https://github.com/Breq16/roslibjs/actions/workflows/test.yml/badge.svg)](https://github.com/Breq16/roslibjs/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/Breq16/roslibjs/branch/develop/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/Breq16/roslibjs)
