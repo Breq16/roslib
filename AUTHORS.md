@@ -1,13 +1,16 @@
-Original Authors
-----------------
+## TypeScript Rewrite
 
- * [Russell Toris](http://users.wpi.edu/~rctoris/) (rctoris@wpi.edu)
- * Jihoon Lee (jihoonlee.in@gmail.com)
- * Brandon Alexander (balexander@willowgarage.com)
- * David Gossow (dgossow@willowgarage.com)
- * Benjamin Pitzer (ben.pitzer@gmail.com)
+- Brooke Chalmers, <https://breq.dev/> and [breq@breq.dev](mailto:breq@breq.dev)
 
-Contributors
-------------
+## Original Authors
 
- * Graeme Yeates (yeatesgraeme@gmail.com)
+- [Russell Toris](http://users.wpi.edu/~rctoris/) (rctoris@wpi.edu)
+- Jihoon Lee (jihoonlee.in@gmail.com)
+- Brandon Alexander (balexander@willowgarage.com)
+- David Gossow (dgossow@willowgarage.com)
+- Benjamin Pitzer (ben.pitzer@gmail.com)
+
+## Contributors
+
+- [Matthijs van der Burgh](https://github.com/MatthijsBurgh) (MatthijsBurgh@outlook.com)
+- Graeme Yeates (yeatesgraeme@gmail.com)

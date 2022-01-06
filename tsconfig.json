@@ -1,0 +1,16 @@
+{
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "module": "es2020",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist"
+  },
+  "lib": ["es2020"]
+}
