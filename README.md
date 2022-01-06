@@ -1,5 +1,8 @@
 # roslibjs
 
+[![Test](https://github.com/Breq16/roslibjs/actions/workflows/test.yml/badge.svg)](https://github.com/Breq16/roslibjs/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/Breq16/roslibjs/branch/develop/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/Breq16/roslibjs)
+
 ## A Modern TypeScript Library for ROS
 
 This project is a port of [roslibjs](http://wiki.ros.org/roslibjs) to TypeScript using modern ECMAScript features. The API is similar to the original, but not entirely compatible, as many asynchronous functions have been modified to return a Promise instead of accepting a callback.
