@@ -49,5 +49,11 @@
   "browser": {
     "pngparse": false,
     "bson": false
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "json"
+    ]
   }
 }

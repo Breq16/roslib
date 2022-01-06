@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     container: ros:noetic
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out project
+        uses: actions/checkout@v2
       - name: Set up node
         uses: actions/setup-node@v2
         with:
@@ -22,3 +23,10 @@ jobs:
         run: bash -c "source /opt/ros/noetic/setup.bash && roslaunch rosbridge_server rosbridge_websocket.launch &"
       - name: Run test suite
         run: npm test
+      - name: Submit code coverage
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage/coverage-final.json # optional
+          fail_ci_if_error: true
+          verbose: true
