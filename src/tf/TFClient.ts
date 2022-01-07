@@ -52,6 +52,7 @@ function TFClient(options) {
   this.frameInfos = {};
   this.republisherUpdateRequested = false;
   this._subscribeCB = null;
+  this._isDisposed = false;
 
   // Create an Action client
   this.actionClient = new ActionClient({
@@ -143,6 +144,12 @@ TFClient.prototype.updateGoal = function () {
  * @param response the service response containing the topic name
  */
 TFClient.prototype.processResponse = function (response) {
+  // Do not setup a topic subscription if already disposed. Prevents a race condition where
+  // The dispose() function is called before the service call receives a response.
+  if (this._isDisposed) {
+    return;
+  }
+
   // if we subscribed to a topic before, unsubscribe so
   // the republisher stops publishing it
   if (this.currentTopic) {
