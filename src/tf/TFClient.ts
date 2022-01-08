@@ -220,6 +220,7 @@ TFClient.prototype.unsubscribe = function (frameID, callback) {
  * Unsubscribe and unadvertise all topics associated with this TFClient.
  */
 TFClient.prototype.dispose = function () {
+  this._isDisposed = true;
   this.actionClient.dispose();
   if (this.currentTopic) {
     this.currentTopic.unsubscribe(this._subscribeCB);
