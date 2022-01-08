@@ -7,7 +7,7 @@
 
 This project is a port of [roslibjs](http://wiki.ros.org/roslibjs) to TypeScript using modern ECMAScript features. The API is similar to the original, but not entirely compatible, as many asynchronous functions have been modified to return a Promise instead of accepting a callback.
 
-This project is designed to work with projects in the [Robot Web Tools](http://robotwebtools.org/) effort. In particular, you must run [`rosbridge_server`])(http://wiki.ros.org/rosbridge_server) on your ROS node in order to connect with this library.
+This project is designed to work with projects in the [Robot Web Tools](http://robotwebtools.org/) effort. In particular, you must run [`rosbridge_server`](http://wiki.ros.org/rosbridge_server) on your ROS node in order to connect with this library.
 
 Do not expose a rosbridge endpoint to a public network or to the internet! This is a security risk. If you cannot run your robot's control system on a private network, you should use a reverse proxy on the server-side to restrict access.
 
