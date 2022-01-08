@@ -1,4 +1,6 @@
 import WebSocket from "isomorphic-ws";
+import WorkerSocket from "workersocket";
+
 import SocketAdapter from "./SocketAdapter.js";
 
 import Topic from "./Topic.js";
@@ -6,7 +8,6 @@ import Service from "./Service.js";
 import ServiceRequest from "./ServiceRequest.js";
 import Param from "./Param.js";
 
-import type { EventEmitter2 as EventEmitter2Type } from "eventemitter2";
 import eventemitter2 from "eventemitter2";
 const EventEmitter2 = eventemitter2.EventEmitter2;
 
@@ -19,14 +20,14 @@ interface RosOptions {
 
 const defaultOptions = {
   groovyCompatibility: true,
-  transportLibrary: "websocket",
+  transportLibrary: "workersocket",
   transportOptions: {},
 };
 
 class Ros extends EventEmitter2 {
   options: RosOptions;
 
-  socket: WebSocket;
+  socket: WebSocket | WorkerSocket;
   idCounter = 0;
   isConnected = false;
 
@@ -43,9 +44,10 @@ class Ros extends EventEmitter2 {
   }
 
   connect(url: string) {
-    if (this.options.transportLibrary === "websocket") {
+    const tl = this.options.transportLibrary;
+    if (tl === "websocket" || tl === "workersocket") {
       if (!this.socket || this.socket.readyState === WebSocket.CLOSED) {
-        const sock = new WebSocket(url);
+        const sock = new (tl === "websocket" ? WebSocket : WorkerSocket)(url);
         sock.binaryType = "arraybuffer";
         this.socket = Object.assign(sock, SocketAdapter.adapt(this));
       }
@@ -61,6 +63,7 @@ class Ros extends EventEmitter2 {
       this.socket.close();
     }
   }
+
   /**
    * Sends an authorization request to the server.
    *

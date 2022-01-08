@@ -58,6 +58,10 @@ The original roslibjs did not work with Rollup due to a quirk in the configurati
 
 This project replaces the original `prototype`-based classes with ES6 classes. This improves type-checking and code readability.
 
+### Cleaner WebSocket-in-Web-Worker Support
+
+The original `roslib` relied on hijacking [`browserify/webworkify`](https://github.com/browserify/webworkify) to take advantage of its internal implementation for running WebSockets in Web Workers. This library uses the [`workersocket`](https://github.com/Breq16/workersocket) library instead.
+
 ## Usage
 
 ```
@@ -121,4 +125,3 @@ The following portions of the library have not yet been rewritten:
 
 - `src/actionlib`, ActionServer and client related utilities
 - `src/tf`, utilities related to the `tf2` transform handling library
-- `src/util/workerSocket`, implementation of a WebSocket proxied through a Web Worker process to avoid blocking the main thread
