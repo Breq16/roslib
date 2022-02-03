@@ -2,7 +2,7 @@
   "name": "@breq/roslib",
   "homepage": "https://github.com/Breq16/roslib",
   "description": "A modern TypeScript library for ROS",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "BSD-2-Clause",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.0",
@@ -11,7 +11,7 @@
     "eventemitter2": "^6.4.0",
     "isomorphic-ws": "^4.0.1",
     "pngparse": "^2.0.0",
-    "workersocket": "^0.2.2"
+    "workersocket": "^0.2.3"
   },
   "keywords": [
     "ROS",
