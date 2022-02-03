@@ -1,7 +1,9 @@
 import WebSocket from "isomorphic-ws";
 import WorkerSocket from "workersocket";
 
-import SocketAdapter from "./SocketAdapter.js";
+import decompressPng from "../util/decompressPng.js";
+import CBOR from "cbor-js";
+import typedArrayTagger from "../util/cborTypedArrayTags.js";
 
 import Topic from "./Topic.js";
 import Service from "./Service.js";
@@ -27,7 +29,7 @@ const defaultOptions = {
 class Ros extends EventEmitter2 {
   options: RosOptions;
 
-  socket: WebSocket | WorkerSocket;
+  socket: WorkerSocket;
   idCounter = 0;
   isConnected = false;
 
@@ -43,13 +45,94 @@ class Ros extends EventEmitter2 {
     }
   }
 
+  handleDecodedMessage(message: any) {
+    if (message.op === "publish") {
+      this.emit(message.topic, message.msg);
+    } else if (message.op === "service_response") {
+      this.emit(message.id, message);
+    } else if (message.op === "call_service") {
+      this.emit(message.service, message);
+    } else if (message.op === "status") {
+      if (message.id) {
+        this.emit("status: " + message.id, message);
+      } else {
+        this.emit("status", message);
+      }
+    }
+  }
+
+  handlePng(message: any): Promise<any> {
+    if (message.op === "png") {
+      return decompressPng(message.data);
+    } else {
+      return message;
+    }
+  }
+
+  decodeBSON(data: Blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const uint8array = new Uint8Array(event.target.result as ArrayBuffer);
+        const BSON = await import("bson");
+        const result = BSON.deserialize(uint8array);
+        resolve(result);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsArrayBuffer(data);
+    });
+  }
+
+  async handleMessage(data: any) {
+    try {
+      if (this.options.transportOptions.decoder) {
+        const message = await this.options.transportOptions.decoder(data);
+        this.handleDecodedMessage(message);
+      } else if (globalThis.Blob && data.data instanceof Blob) {
+        const message = await this.decodeBSON(data.data);
+        const decoded = await this.handlePng(message);
+        this.handleDecodedMessage(decoded);
+      } else if (data.data instanceof ArrayBuffer) {
+        const message = CBOR.decode(data.data, typedArrayTagger);
+        this.handleDecodedMessage(message);
+      } else {
+        const message = JSON.parse(typeof data === "string" ? data : data.data);
+        const decoded = await this.handlePng(message);
+        this.handleDecodedMessage(decoded);
+      }
+    } catch (e) {
+      console.error("Error while parsing socket message:", e);
+    }
+  }
+
   connect(url: string) {
     const tl = this.options.transportLibrary;
     if (tl === "websocket" || tl === "workersocket") {
       if (!this.socket || this.socket.readyState === WebSocket.CLOSED) {
-        const sock = new (tl === "websocket" ? WebSocket : WorkerSocket)(url);
-        sock.binaryType = "arraybuffer";
-        this.socket = Object.assign(sock, SocketAdapter.adapt(this));
+        if (tl === "websocket") {
+          this.socket = new WebSocket(url);
+        } else if (tl === "workersocket") {
+          this.socket = new WorkerSocket(url);
+        }
+
+        this.socket.binaryType = "arraybuffer";
+
+        this.socket.onopen = () => {
+          this.isConnected = true;
+          this.emit("connection");
+        };
+        this.socket.onclose = () => {
+          this.isConnected = false;
+          this.emit("close");
+        };
+        this.socket.onerror = (event: Event) => {
+          this.emit("error", event);
+        };
+        this.socket.onmessage = (event: Event) => {
+          this.handleMessage(event);
+        };
       }
     } else {
       throw (
