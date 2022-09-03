@@ -25,7 +25,7 @@ jobs:
       - name: Compile TypeScript
         run: npm run build
       - name: Install ROSBridge Server
-        run: apt-get update && apt-get install -y --no-install-recommends ros-noetic-rosbridge-server
+        run: apt-get update && apt-get install -y --no-install-recommends ros-noetic-rosbridge-server git
       - name: Launch ROS
         run: bash -c "source /opt/ros/noetic/setup.bash && roslaunch rosbridge_server rosbridge_websocket.launch &"
       - name: Run test suite
