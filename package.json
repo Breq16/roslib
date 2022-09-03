@@ -2,7 +2,7 @@
   "name": "@breq/roslib",
   "homepage": "https://github.com/breqdev/roslib",
   "description": "A modern TypeScript library for ROS",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "BSD-2-Clause",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.2",
