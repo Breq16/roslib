@@ -1,7 +1,7 @@
 # @breq/roslib
 
-[![Test](https://github.com/Breq16/roslibjs/actions/workflows/test.yml/badge.svg)](https://github.com/Breq16/roslibjs/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/Breq16/roslibjs/branch/develop/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/Breq16/roslibjs)
+[![Test](https://github.com/breqdev/roslibjs/actions/workflows/test.yml/badge.svg)](https://github.com/breqdev/roslibjs/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/breqdev/roslibjs/branch/develop/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/breqdev/roslibjs)
 
 ## A Modern TypeScript Library for ROS
 
@@ -60,7 +60,7 @@ This project replaces the original `prototype`-based classes with ES6 classes. T
 
 ### Cleaner WebSocket-in-Web-Worker Support
 
-The original `roslib` relied on hijacking [`browserify/webworkify`](https://github.com/browserify/webworkify) to take advantage of its internal implementation for running WebSockets in Web Workers. This library uses the [`workersocket`](https://github.com/Breq16/workersocket) library instead.
+The original `roslib` relied on hijacking [`browserify/webworkify`](https://github.com/browserify/webworkify) to take advantage of its internal implementation for running WebSockets in Web Workers. This library uses the [`workersocket`](https://github.com/breqdev/workersocket) library instead.
 
 ## Usage
 
