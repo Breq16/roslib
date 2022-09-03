@@ -1,9 +1,7 @@
 import ServiceRequest from "./ServiceRequest.js";
 import ServiceResponse from "./ServiceResponse.js";
 import Ros from "./Ros.js";
-import type { EventEmitter2 as EventEmitter2Type } from "eventemitter2";
-import eventemitter2 from "eventemitter2";
-const EventEmitter2 = eventemitter2.EventEmitter2;
+import EventEmitter2 from "eventemitter2";
 
 type ServiceHandler = (
   message: ServiceRequest,
