@@ -1,7 +1,7 @@
 # @breq/roslib
 
 [![Test](https://github.com/breqdev/roslib/actions/workflows/test.yml/badge.svg)](https://github.com/breqdev/roslib/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/breqdev/roslib/branch/develop/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/breqdev/roslib)
+[![codecov](https://codecov.io/gh/breqdev/roslib/branch/main/graph/badge.svg?token=3RK2PR2PH4)](https://codecov.io/gh/breqdev/roslib)
 
 ## A Modern TypeScript Library for ROS
 
