@@ -10,8 +10,7 @@ import Service from "./Service.js";
 import ServiceRequest from "./ServiceRequest.js";
 import Param from "./Param.js";
 
-import eventemitter2 from "eventemitter2";
-const EventEmitter2 = eventemitter2.EventEmitter2;
+import EventEmitter2 from "eventemitter2";
 
 interface RosOptions {
   url?: string;

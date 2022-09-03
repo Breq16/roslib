@@ -1,6 +1,5 @@
 import { expect } from "chai";
-import eventemitter2 from "eventemitter2";
-const { EventEmitter2 } = eventemitter2;
+import EventEmitter2 from "eventemitter2";
 import * as ROSLIB from "../src/index.js";
 
 describe("ROS Object", () => {

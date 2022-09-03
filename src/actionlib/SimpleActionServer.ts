@@ -5,8 +5,7 @@
 
 import Topic from "../core/Topic.js";
 import Message from "../core/Message.js";
-import eventemitter2 from "eventemitter2";
-const { EventEmitter2 } = eventemitter2;
+import EventEmitter2 from "eventemitter2";
 
 /**
  * An actionlib action server client.
