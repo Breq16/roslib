@@ -34,11 +34,9 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          directory: ./coverage
-          files: ./coverage-final.json
+          files: coverage-final.json
           fail_ci_if_error: true
           verbose: true
-          root_dir: .
       - name: Publish to NPM
         if: ${{ github.event_name == 'release' }}
         run: npm publish --access public
