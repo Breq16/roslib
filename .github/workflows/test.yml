@@ -33,8 +33,9 @@ jobs:
       - name: Submit code coverage
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: ./coverage/coverage-final.json # optional
+          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          directory: ./coverage
+          files: ./coverage-final.json
           fail_ci_if_error: true
           verbose: true
       - name: Publish to NPM
